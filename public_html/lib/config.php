@@ -5,7 +5,7 @@
 //for Heroku use the below segment and delete the duplicate below
 $cleardb_url      = parse_url(getenv("JAWSDB_URL"));
 $dbhost   = $cleardb_url["host"];
-$dbuser = $cleardb_url["ejm34"];
-$dbpass = $cleardb_url[""];
-$dbdatabase = substr($cleardb_url["path"],1);
+$dbuser = $cleardb_url["user"];
+$dbpass = $cleardb_url["pass"];
+$dbdatabase       = substr($cleardb_url["path"],1);
 ?>
