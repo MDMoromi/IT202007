@@ -33,8 +33,8 @@ if(isset($_POST["save"])){
 			":description"=>$description,
 			":modified"=>$modified,
 			":user"=>$user
-		]);
 			":id"=>$id
+		]);
 		if($r){
 			flash("Updated successfully with id: " . $id);
 		}
