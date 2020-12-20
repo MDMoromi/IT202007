@@ -1,6 +1,6 @@
 /* design intentionally made horrible to see who doesn't change it*/
 body {
-    font-family: system;
+    font-family: 'Times New Roman', serif;
     font-size: 1.5em;
 }
 
@@ -9,7 +9,7 @@ ul[class="nav"]{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #026e02;
+    background-color: #3d87ff;
 }
 
 .nav > li {
@@ -25,7 +25,9 @@ ul[class="nav"]{
 }
 
 .nav > li a:hover {
-    background-color: #39ca40;
+    list-style-type: square;
+	list-style-image: (../img/url('nurse.png');
+	background-color: #99c0ff;
 }
 
 input, select {
@@ -40,7 +42,7 @@ input, select {
 
 input[type=submit] {
     width: 100%;
-    background-color: #026e02;
+    background-color: #3d87ff;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
