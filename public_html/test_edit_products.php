@@ -69,7 +69,7 @@ if(isset($id)){
 	<label>Price</label>
 	<input type="number" min="0" step=".01" name="price" value="<?php echo $result["price"];?>"/>
 	<label>Description</label>
-	<input name="description" placeholder="Description" value="<?php echo $result["description"];?>"//>
+	<input name="description" placeholder="Description" value="<?php echo $result["description"];?>"/>
 	<input type="submit" name="save" value="Update"/>
 </form>
 
