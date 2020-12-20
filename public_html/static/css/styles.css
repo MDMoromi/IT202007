@@ -6,8 +6,8 @@ body {
 
 ul[class="nav"]{
     list-style-type: none;
-    margin: 0;
-    padding: 16px;
+    margin: 16px;
+    padding: 0;
     overflow: hidden;
     background-color: #3d87ff;
 }
