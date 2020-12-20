@@ -55,7 +55,7 @@ $result = [];
 if(isset($id)){
 	$id = $_GET["id"];
 	$db = getDB();
-	$stmt = $db->prepare("SELECT * FROM F20_Eggs where id = :id");
+	$stmt = $db->prepare("SELECT * FROM Products where id = :id");
 	$r = $stmt->execute([":id"=>$id]);
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
