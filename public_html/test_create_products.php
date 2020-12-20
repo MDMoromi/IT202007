@@ -16,6 +16,7 @@ if (!has_role("Admin")) {
 	<input type="number" min="0" name="price"/>
 	<label>Description</label>
 	<input name="description" placeholder="Description"/>
+	<input type="submit" name="save" value="Create"/>
 </form>
 
 <?php
