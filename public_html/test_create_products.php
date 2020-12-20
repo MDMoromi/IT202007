@@ -13,7 +13,7 @@ if (!has_role("Admin")) {
 	<label>Quantity</label>
 	<input type="number" min="0" name="quantity"/>
 	<label>Price</label>
-	<input type="number" min="0" name="price"/>
+	<input type="number" min="0" step=".01" name="price"/>
 	<label>Description</label>
 	<input name="description" placeholder="Description"/>
 	<input type="submit" name="save" value="Create"/>
