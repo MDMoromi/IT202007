@@ -96,3 +96,9 @@ input:nth-of-type(5) {
 	text-decoration: none;
 	color:#ffffff;
 }
+
+.bigHappyNurse {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	width:200px;
+}
