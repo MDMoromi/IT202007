@@ -24,7 +24,7 @@ if(isset($_POST["delete"])){
 }
 if(isset($_POST["deleteAll"])){
     $stmt = $db->prepare("DELETE FROM Cart where user_id = :id");
-    $r = $stmt->execute([":id"=>$_POST["user_id"]]);
+    $stmt->execute([":id"=>get_user_id()]);
     if($r){
         flash("Cleared cart", "success");
     }
@@ -39,7 +39,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		<div class="list-group-item">
 			<form method="POST">
                 <input type="hidden" name="cartId" value="<?php echo $r["id"];?>"/>
-                <input type="submit" class="btn btn-danger" name="deleteAll" value="Delete Cart Item"/>
+                <input type="submit" class="btn btn-danger" name="deleteAll" value="Clear Cart"/>
             </form>
 		</div>
         <div class="list-group">
