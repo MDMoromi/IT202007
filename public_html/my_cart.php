@@ -22,6 +22,13 @@ if(isset($_POST["delete"])){
         flash("Deleted item from cart", "success");
     }
 }
+if(isset($_POST["deleteAll"])){
+    $stmt = $db->prepare("DELETE FROM Cart where user_id = :id");
+    $r = $stmt->execute([":id"=>$_POST["user_id"]]);
+    if($r){
+        flash("Cleared cart", "success");
+    }
+}
 $stmt = $db->prepare("SELECT c.id, p.name, c.price, c.quantity, (c.price * c.quantity) as sub from Cart c JOIN Products p on c.product_id = p.id where c.user_id = :id");
 $stmt->execute([":id"=>get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -29,6 +36,12 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container-fluid">
     <h3>My Cart</h3>
+		<div class="list-group-item">
+			<form method="POST">
+                <input type="hidden" name="cartId" value="<?php echo $r["id"];?>"/>
+                <input type="submit" class="btn btn-danger" name="deleteAll" value="Delete Cart Item"/>
+            </form>
+		</div>
         <div class="list-group">
         <?php if($results && count($results) > 0):?>
             <div class="list-group-item">
