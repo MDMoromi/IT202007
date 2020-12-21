@@ -43,7 +43,7 @@ $db = getDB();
                 </div>
                 <div class="add-view-div">
                     <a type="button" href="view_products.php?id=<?php safer_echo($r['id']); ?>">View</a>
-					<form method="post">
+					<form class="add-div" method="post">
 						<input type="hidden" name="product_id" value="<?php echo $r['id'];?>"/>
 						<input type="submit" value="Add to Cart"/>
 					</form>
