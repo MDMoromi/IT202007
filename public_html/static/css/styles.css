@@ -97,7 +97,7 @@ input:nth-of-type(5) {
 	color:#ffffff;
 }
 
-.addDiv {
+.addDiv input{
 	float:left;
 	padding:10px;
 }
