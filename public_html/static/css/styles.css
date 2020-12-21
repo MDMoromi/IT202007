@@ -81,9 +81,12 @@ input:nth-of-type(5) {
 
 .add-view-div{
 	background-color:#3d87ff;
-	padding:10px;
-	margin-top:5px;
-	margin-bottom:5px;
+	margin:15px;
+}
+
+.add-view-div a{
+	text-decoration: none;
+	color:#ffffff
 }
 
 .add-view-div a:hover{
