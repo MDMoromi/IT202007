@@ -18,8 +18,8 @@ if(isset($_POST["product_id"])){
     if($result) {
         $name = $result["name"];
         $price = $result["price"];
-        $stmt = $db->prepare("INSERT INTO F20_Cart (user_id, product_id, price) VALUES(:user_id, :product_id, :price) ON DUPLICATE KEY UPDATE quantity = quantity +1, price = :price"); 
-		$r = $stmt->execute([":user_id"=>get_user_id(), ":product_id"=>$itemId, ":price"=>$price]); 
+        $stmt = $db->prepare("INSERT INTO Cart (user_id, product_id, price) VALUES(:user_id, :product_id, :price) ON DUPLICATE KEY UPDATE quantity = quantity +1, price = :price"); 
+		$r = $stmt->execute([":user_id"=>get_user_id(), ":product_id"=>$product_id, ":price"=>$price]); 
     }
 }
 ?>
