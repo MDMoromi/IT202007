@@ -9,3 +9,4 @@ session_destroy();
 echo "You're logged out (proof by dumping the session)<br>";
 echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 ?>
+<?php header("Location: login.php"); ?>

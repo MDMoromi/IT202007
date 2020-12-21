@@ -9,6 +9,22 @@ if (!is_logged_in()) {
 ?>
 
 <?php
+if(isset($_POST["product_id"])){
+    $id = (int)$_POST["product_id"];
+    $db = getDB();
+    $stmt = $db->prepare("SELECT name, price from Products where id = :id");
+    $stmt->execute([":id"=>$id]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($result) {
+        $name = $result["name"];
+        $price = $result["price"];
+        $stmt = $db->prepare("INSERT INTO Cart (user_id, product_id, price, quantity) VALUES(:user_id, :product_id, :price, 1) ON DUPLICATE KEY UPDATE quantity = quantity +1, price = :price"); 
+        $r = $stmt->execute([":user_id"=>get_user_id(), ":product_id"=>$id, ":price"=>$price]);
+    }
+}
+?>
+
+<?php
 //$query = "SELECT * FROM Products WHERE quantity > 0 ORDER BY CREATED DESC LIMIT 10";
 $db = getDB();
 	$stmt = $db->prepare("SELECT * FROM Products WHERE quantity > 0 ORDER BY CREATED DESC LIMIT 10");
@@ -42,8 +58,11 @@ $db = getDB();
                     <div><?php safer_echo($r["description"]); ?></div>
                 </div>
                 <div class="add-view-div">
-                    <a type="button" href="add_to_cart.php?id=<?php safer_echo($r['id']); ?>">Add to Cart</a>
                     <a type="button" href="view_products.php?id=<?php safer_echo($r['id']); ?>">View</a>
+					<form class="add-div" method="post">
+						<input type="hidden" name="product_id" value="<?php echo $r['id'];?>"/>
+						<input type="submit" value="Add to Cart"/>
+					</form>
                 </div>
             </div>
         <?php endforeach; ?>
