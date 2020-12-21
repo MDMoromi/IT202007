@@ -74,11 +74,11 @@ input:nth-of-type(5) {
     margin-right: 25px !important;
 }
 
-.list-group-item div{
+.product-div{
 	background-color:#3d87ff;
 	margin:10px;
 }
 
-.list-group-item div a:hover{
+.product-div a:hover{
 	background-color: #99c0ff;
 }
