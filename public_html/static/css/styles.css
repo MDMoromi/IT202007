@@ -76,7 +76,7 @@ input:nth-of-type(5) {
 
 .product-div{
 	background-color:#3d87ff;
-	margin:10px;
+	padding:10px;
 }
 
 .product-div a:hover{
