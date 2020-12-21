@@ -22,33 +22,30 @@ $db = getDB();
 ?>
 
 <div class="results">
-        <div class="list-group">
-            <?php foreach ($results as $r): ?>
-                <div class="list-group-item">
-                    <div>
-                        <div>Name:</div>
-                        <div><?php safer_echo($r["name"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Quantity:</div>
-                        <div><?php safer_echo($r["quantity"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Price:</div>
-                        <div><?php safer_echo($r["price"]); ?></div>
-                    </div>
-                    <div>
-                        <div>Description:</div>
-                        <div><?php safer_echo($r["description"]); ?></div>
-                    </div>
-                    <div>
-                        <a type="button" href="add_to_cart.php?id=<?php safer_echo($r['id']); ?>">Add to Cart</a>
-                        <a type="button" href="view_products.php?id=<?php safer_echo($r['id']); ?>">View</a>
-                    </div>
+    <div class="list-group">
+        <?php foreach ($results as $r): ?>
+            <div class="list-group-item">
+                <div>
+                    <div>Name:</div>
+                    <div><?php safer_echo($r["name"]); ?></div>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    <?php else: ?>
-        <p>No results</p>
-    <?php endif; ?>
+                <div>
+                    <div>Quantity:</div>
+                    <div><?php safer_echo($r["quantity"]); ?></div>
+                </div>
+                <div>
+                    <div>Price:</div>
+                    <div><?php safer_echo($r["price"]); ?></div>
+                </div>
+                <div>
+                    <div>Description:</div>
+                    <div><?php safer_echo($r["description"]); ?></div>
+                </div>
+                <div>
+                    <a type="button" href="add_to_cart.php?id=<?php safer_echo($r['id']); ?>">Add to Cart</a>
+                    <a type="button" href="view_products.php?id=<?php safer_echo($r['id']); ?>">View</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>
