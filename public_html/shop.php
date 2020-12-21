@@ -9,8 +9,8 @@ if (!is_logged_in()) {
 ?>
 
 <?php
-if(isset($_POST["id"])){
-    $id = (int)$_POST["id"];
+if(isset($_POST["product_id"])){
+    $id = (int)$_POST["product_id"];
     $db = getDB();
     $stmt = $db->prepare("SELECT name, price from Products where id = :id");
     $stmt->execute([":id"=>$id]);
