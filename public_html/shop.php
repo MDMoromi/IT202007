@@ -14,14 +14,12 @@ if(isset($_POST["product_id"])){
     $db = getDB();
     $stmt = $db->prepare("SELECT name, price from Products where id = :id");
     $stmt->execute([":id"=>$id]);
-	echo var_export($stmt->errorInfo(),true);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if($result) {
         $name = $result["name"];
         $price = $result["price"];
-        $stmt = $db->prepare("INSERT INTO Cart (user_id, product_id, price, quantity) VALUES(:user_id, :product_id, :price, 1) ON DUPLICATE KEY UPDATE, price = :price");
+        $stmt = $db->prepare("INSERT INTO Cart (user_id, product_id, price, quantity) VALUES(:user_id, :product_id, :price, 1) ON DUPLICATE KEY UPDATE quantity = quantity +1, price = :price"); 
         $r = $stmt->execute([":user_id"=>get_user_id(), ":product_id"=>$id, ":price"=>$price]);
-		echo var_export($stmt->errorInfo(),true);
     }
 }
 ?>
