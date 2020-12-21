@@ -11,7 +11,7 @@ if (!is_logged_in()) {
 <?php
 //$query = "SELECT * FROM Products WHERE quantity > 0 ORDER BY CREATED DESC LIMIT 10";
 $db = getDB();
-	$stmt = $db->prepare("SELECT id, name, quantity, price, description, user_id from Products WHERE name like :q LIMIT 10""SELECT * FROM Products WHERE quantity > 0 ORDER BY CREATED DESC LIMIT 10");
+	$stmt = $db->prepare("SELECT * FROM Products WHERE quantity > 0 ORDER BY CREATED DESC LIMIT 10");
     $r = $stmt->execute();
     if ($r) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
