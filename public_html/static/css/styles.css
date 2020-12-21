@@ -73,3 +73,32 @@ input:nth-of-type(5) {
     margin-left: 25px !important;
     margin-right: 25px !important;
 }
+
+.product-div{
+	background-color:#3d87ff;
+	padding:10px;
+}
+
+.add-view-div{
+	background-color:#3d87ff;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.add-view-div a{
+	text-decoration: none;
+	color:#ffffff;
+	padding:10px;
+}
+
+.add-view-div a:hover{
+	background-color: #99c0ff;
+	text-decoration: none;
+	color:#ffffff;
+}
+
+.bigHappyNurse {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	width:200px;
+}
