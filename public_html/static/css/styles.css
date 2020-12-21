@@ -88,4 +88,6 @@ input:nth-of-type(5) {
 
 .add-view-div a:hover{
 	background-color: #99c0ff;
+	text-decoration: none;
+	color:#ffffff
 }
