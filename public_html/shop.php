@@ -9,6 +9,34 @@ if (!is_logged_in()) {
 ?>
 
 <?php
+if(isset($_POST["id"])){
+    $id = (int)$_POST["id"];
+    $db = getDB();
+    $stmt = $db->prepare("SELECT name, price from Products where id = :id");
+    $stmt->execute([":id"=>$id]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($result) {
+        $name = $result["name"];
+        $price = $result["price"];
+        $stmt = $db->prepare("INSERT INTO Cart (user_id, product_id, price) VALUES(:user_id, :product_id, :price) ON DUPLICATE KEY UPDATE quantity = quantity +1, price = :price");
+        $r = $stmt->execute([":user_id"=>get_user_id(), ":product_id"=>$id, ":price"=>$price]);
+        if ($r) {
+            $response = ["status" => 200, "message" => "Added $name to cart"];
+            echo json_encode($response);
+        }
+        else{
+            $response = ["status" => 400, "message" => "There was an error adding $name to cart"];
+            echo json_encode($response);
+        }
+    }
+    else{
+        $response = ["status" => 404, "error" => "Item $id not found"];
+        echo json_encode($response);
+    }
+}
+?>
+
+<?php
 //$query = "SELECT * FROM Products WHERE quantity > 0 ORDER BY CREATED DESC LIMIT 10";
 $db = getDB();
 	$stmt = $db->prepare("SELECT * FROM Products WHERE quantity > 0 ORDER BY CREATED DESC LIMIT 10");
