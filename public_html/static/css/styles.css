@@ -73,3 +73,12 @@ input:nth-of-type(5) {
     margin-left: 25px !important;
     margin-right: 25px !important;
 }
+
+.list-group-item div{
+	background-color:#3d87ff;
+	margin:10px;
+}
+
+.list-group-item div a:hover{
+	background-color: #99c0ff;
+}
