@@ -41,7 +41,7 @@ $db = getDB();
                     <div>Description:</div>
                     <div><?php safer_echo($r["description"]); ?></div>
                 </div>
-                <div class="product-div">
+                <div class="add-view-div">
                     <a type="button" href="add_to_cart.php?id=<?php safer_echo($r['id']); ?>">Add to Cart</a>
                     <a type="button" href="view_products.php?id=<?php safer_echo($r['id']); ?>">View</a>
                 </div>

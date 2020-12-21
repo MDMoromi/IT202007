@@ -79,6 +79,13 @@ input:nth-of-type(5) {
 	padding:10px;
 }
 
-.product-div a:hover{
+.add-view-div{
+	background-color:#3d87ff;
+	padding:10px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.add-view-div a:hover{
 	background-color: #99c0ff;
 }
