@@ -40,15 +40,15 @@ if(isset($_POST["checkout"])){
 	
 	foreach($purchases as $p){
 		//insert line item to order
-		$stmt = $db->prepare("INSERT INTO Orders (order_id, product_id, quantity, price, user_id, add, pay) VALUES(:oid, :pid, :q, :p, :uid, :add, :pay)");
+		$stmt = $db->prepare("INSERT INTO Orders (order_id, product_id, quantity, price, user_id, address, processor) VALUES(:oid, :pid, :q, :p, :uid, :address, :processor)");
 		$stmt->execute([
 		":oid"=>$max,
 		":pid"=>$p["id"],
 		":q"=>$p["quantity"],
 		":p"=>$p["price"],
 		":uid"=>get_user_id(),
-		":add"=>$address,
-		":pay"=>$_POST["processor"]]);
+		":address"=>$address,
+		":processor"=>$_POST["processor"]]);
 		
 		//update quantity
 		$stmt = $db->prepare("UPDATE Products set quantity = quantity - :q WHERE id = :id");
