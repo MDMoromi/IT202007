@@ -19,7 +19,7 @@ if(isset($_POST["checkout"])){
 	$max++;
 	
 	//get product info
-	$stmt->prepare("SELECT p.id, p.price, c.quantity, p.price*c.quantity as subtotal From Cart c JOIN Products p on c.product_id = p.id where c.user_id = :uid");
+	$stmt = $db->prepare("SELECT p.id, p.price, c.quantity, p.price*c.quantity as subtotal From Cart c JOIN Products p on c.product_id = p.id where c.user_id = :uid");
 	$stmt->execute([":uid"=>get_user_id()]);
 	$purchases = $stmt->fetchAll(FETCH_ASSOC);
 	
