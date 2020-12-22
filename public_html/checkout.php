@@ -19,6 +19,8 @@ if(isset($_POST["checkout"])){
 $stmt = $db->prepare("SELECT c.id, p.name, c.price, c.quantity, (c.price * c.quantity) as sub from Cart c JOIN Products p on c.product_id = p.id where c.user_id = :id");
 $stmt->execute([":id"=>get_user_id()]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$total = 0;
 ?>
 
 <div class="container-fluid">
@@ -48,15 +50,22 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 						<?php echo $r["quantity"];?>
                     </div>
 					<div class="col">
-                       Subtotal
+                       Subtotal for Product
                     </div>
                     <div class="col">
                         <?php echo $r["sub"];?>
                     </div>
+					<?php $total += (float)$r["sub"];?>
 					<br/>
                 </div>
             </div>
             <?php endforeach;?>
+			<div class="col">
+               Overall Subtotal
+            </div>
+            <div class="col">
+                <?php echo $r["total"];?>
+            </div>
         <?php else:?>
         <div class="list-group-item">
             No items in cart
