@@ -111,9 +111,6 @@ input:nth-of-type(5) {
 .checkout {
 	padding:16px;
 	background-color:#3d87ff;
-}
-
-.checkout a {
 	text-decoration:none;
 	text-align:center;
 	color:#ffffff;

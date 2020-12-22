@@ -82,8 +82,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif;?>
     </div>
 </div>
-<div class="checkout">
-	<a href="checkout.php">Checkout</a>
+<div>
+	<a class="checkout" href="checkout.php">Checkout</a>
 </div>
 
 	
