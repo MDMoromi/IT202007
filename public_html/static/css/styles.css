@@ -107,3 +107,12 @@ input:nth-of-type(5) {
 	border-radius: 4px;
 	width:200px;
 }
+
+.checkout {
+	padding:16px;
+	background-color:#3d87ff;
+	text-decoration:none;
+	text-align:center;
+	color:#ffffff;
+	font-size:3em;
+}

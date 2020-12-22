@@ -44,25 +44,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		</div>
         <div class="list-group">
         <?php if($results && count($results) > 0):?>
-            <div class="list-group-item">
-                <div class="row">
-                    <div class="col">
-                       Name
-                    </div>
-                    <div class="col">
-                        Price
-                    </div>
-                    <div class="col">
-                        Quantity
-                    </div>
-                    <div class="col">
-                        Subtotal
-                    </div>
-                    <div class="col">
-                        Actions
-                    </div>
-                </div>
-            </div>
             <?php foreach($results as $r):?>
             <div class="list-group-item">
                 <form method="POST">
@@ -93,12 +74,17 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
-            <?php endforeach;?>
+        <?php endforeach;?>
         <?php else:?>
-        <div class="list-group-item">
-            No items in cart
-        </div>
-        <?php endif;?>
-        </div>
+    <div class="list-group-item">
+        No items in cart
     </div>
+        <?php endif;?>
+    </div>
+</div>
+<div>
+	<a class="checkout" href="checkout.php">Checkout</a>
+</div>
+
+	
 <?php require(__DIR__ . "/partials/flash.php");
