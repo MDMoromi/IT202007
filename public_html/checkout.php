@@ -53,6 +53,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="col">
                         <?php echo $r["sub"];?>
                     </div>
+					<br/>
                 </div>
             </div>
             <?php endforeach;?>
