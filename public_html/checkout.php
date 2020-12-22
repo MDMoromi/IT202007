@@ -64,7 +64,7 @@ $total = 0;
                Overall Subtotal
             </div>
             <div class="col">
-                <?php echo "total";?>
+                <?php echo $total;?>
             </div>
         <?php else:?>
         <div class="list-group-item">
