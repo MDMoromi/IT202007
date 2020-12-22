@@ -23,7 +23,7 @@ if(isset($_POST["checkout"])){
 	if(isset($_POST['street'])){
 		$address .= $_POST['street'];
 	}
-	if(if(isset($_POST['city'])){
+	if(isset($_POST['city'])){
 		$address .= ' ' .$_POST['city'];
 	}
 	if(isset($_POST['state'])){
