@@ -93,17 +93,12 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
-        <?php endforeach;?>
+            <?php endforeach;?>
         <?php else:?>
-    <div class="list-group-item">
-        No items in cart
-    </div>
+        <div class="list-group-item">
+            No items in cart
+        </div>
         <?php endif;?>
+        </div>
     </div>
-</div>
-<div class="checkout">
-	<a href="checkout.php">Checkout</a>
-</div>
-
-	
 <?php require(__DIR__ . "/partials/flash.php");
