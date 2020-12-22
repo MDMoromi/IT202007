@@ -18,6 +18,21 @@ if(isset($_POST["checkout"])){
 	$max = (int)$result["om"];
 	$max++;
 	
+	//builds address 
+	$address = '';
+	if(isset($_POST['street'])){
+		$address .= $_POST['street'];
+	}
+	if(if(isset($_POST['city'])){
+		$address .= ' ' .$_POST['city'];
+	}
+	if(isset($_POST['state'])){
+		$address .= ' ' . $_POST['state'];
+	}
+	if(isset($_POST['zip'])){
+		$address .= ' ' . $_POST['zip'];
+	}
+
 	//get product info
 	$stmt = $db->prepare("SELECT p.id, p.price, c.quantity, p.price*c.quantity as subtotal From Cart c JOIN Products p on c.product_id = p.id where c.user_id = :uid");
 	$stmt->execute([":uid"=>get_user_id()]);
@@ -33,7 +48,7 @@ if(isset($_POST["checkout"])){
 		":p"=>$p["price"],
 		":uid"=>get_user_id(),
 		":add"=>$address,
-		":pay"=>$processor]);
+		":pay"=>$_POST["processor"]]);
 		
 		//update quantity
 		$stmt = $db->prepare("UPDATE Products set quantity = quantity - :q WHERE id = :id");
