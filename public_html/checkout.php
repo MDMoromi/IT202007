@@ -25,7 +25,7 @@ if(isset($_POST["checkout"])){
 	
 	foreach($purchases as $p){
 		//insert line item to order
-		$stmt = $db->("INSERT INTO Order (order_id, product_id, quantity, price, user_id, add, pay) VALUES(:oid, :pid, :q, :p, :uid, :add, :pay)");
+		$stmt = $db->prepare("INSERT INTO Order (order_id, product_id, quantity, price, user_id, add, pay) VALUES(:oid, :pid, :q, :p, :uid, :add, :pay)");
 		$stmt->execute([
 		":oid"=>$max,
 		":pid"=>$p["id"],
