@@ -28,18 +28,6 @@ ul[class="nav"]{
 	background-color: #99c0ff;
 }
 
-.checkout {
-	padding:16px;
-	background-color:#3d87ff;
-}
-
-.checkout a {
-	text-decoration:none;
-	text-align:center;
-	color:#ffffff;
-	font-size:3em;
-}
-
 input, select {
     width: 100%;
     padding: 12px 20px;
@@ -118,4 +106,16 @@ input:nth-of-type(5) {
 	border: 1px solid #ddd;
 	border-radius: 4px;
 	width:200px;
+}
+
+.checkout {
+	padding:16px;
+	background-color:#3d87ff;
+}
+
+.checkout a {
+	text-decoration:none;
+	text-align:center;
+	color:#ffffff;
+	font-size:3em;
 }

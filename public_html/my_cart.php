@@ -44,25 +44,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		</div>
         <div class="list-group">
         <?php if($results && count($results) > 0):?>
-            <div class="list-group-item">
-                <div class="row">
-                    <div class="col">
-                       Name
-                    </div>
-                    <div class="col">
-                        Price
-                    </div>
-                    <div class="col">
-                        Quantity
-                    </div>
-                    <div class="col">
-                        Subtotal
-                    </div>
-                    <div class="col">
-                        Actions
-                    </div>
-                </div>
-            </div>
             <?php foreach($results as $r):?>
             <div class="list-group-item">
                 <form method="POST">
