@@ -6,7 +6,9 @@ if (!is_logged_in()) {
     flash("You must be logged in to access this page");
     die(header("Location: login.php"));
 }
+?>
 
+<?php
 $db = getDB();
 if(isset($_POST["checkout"])){
 	//get new order ref
@@ -37,7 +39,7 @@ if(isset($_POST["checkout"])){
 		$stmt = $db->prepare("UPDATE Products set quantity = quantity - :q WHERE id = :id");
 		$stmt->execute([
 		":q"=>$p["quantity"],
-		":id"=>$p["id"]);
+		":id"=>$p["id"]]);
 	}
 	
 	//clear cart
