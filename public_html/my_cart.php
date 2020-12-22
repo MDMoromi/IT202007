@@ -82,9 +82,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif;?>
     </div>
 </div>
+<?php require(__DIR__ . "/partials/flash.php");
 <div>
 	<a class="checkout" href="checkout.php">Checkout</a>
 </div>
-
-	
-<?php require(__DIR__ . "/partials/flash.php");
