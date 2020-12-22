@@ -29,14 +29,26 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="list-group-item">
                 <form method="POST">
                 <div class="row">
+					<div class="col">
+                       Product
+                    </div>
                     <div class="col">
                         <?php echo $r["name"];?>
+                    </div>
+					<div class="col">
+                       Price
                     </div>
                     <div class="col">
                         <?php echo $r["price"];?>
                     </div>
+					<div class="col">
+                       Quantity
+                    </div>
                     <div class="col">
 						<?php echo $r["quantity"];?>
+                    </div>
+					<div class="col">
+                       Subtotal
                     </div>
                     <div class="col">
                         <?php echo $r["sub"];?>
