@@ -9,11 +9,13 @@ if (!is_logged_in()) {
 
 $db = getDB();
 if(isset($_POST["checkout"])){
-    //$stmt = $db->prepare("DELETE FROM Cart where id = :id");
-    //$r = $stmt->execute([":id"=>$_POST["cartId"]]);
-    //if($r){
-    //    flash("Deleted item from cart", "success");
-    //}
+	$stmt = $db->prepare("SELECT ifnull(max(order_id),0) INTO Orders(order_id)");
+	$r = $stmt->execute([":order_id"=>$_POST["order_id"]]);
+    $stmt = $db->prepare("INSERT INTO Orders(processor,price,quantity,user_id,product_id) VALUES(:processor,:total,:quantity,:user_id,:product_id");
+    $r = $stmt->execute([":processor,:total,:quantity,:user_id,:product_id"=>$_POST["order_id"]]);
+    if($r){
+        flash("Order has been placed", "success");
+    }
 }
 
 $stmt = $db->prepare("SELECT c.id, p.name, c.price, c.quantity, (c.price * c.quantity) as sub from Cart c JOIN Products p on c.product_id = p.id where c.user_id = :id");
@@ -25,7 +27,7 @@ $total = 0;
 
 <div class="container-fluid">
     <h3>Checkout</h3>
-        <div class="list-group">
+    <div class="list-group">
         <?php if($results && count($results) > 0):?>
             <?php foreach($results as $r):?>
             <div class="list-group-item">
@@ -71,6 +73,22 @@ $total = 0;
             No items in cart
         </div>
         <?php endif;?>
-        </div>
     </div>
+	<div>
+		<form method="POST">
+			<label for="processor">Payment Processor:</label>
+			<select id="processor" required name="processor">
+				<option value="paypal">Paypal</option>
+				<option value="visa">Visa</option>
+				<option value="mastercard">Mastercard</option>
+				<option value="amex">American Express</option>
+			</select>
+			<input type="text" name="street" required placeholder="Street Address"/>
+			<input type="text" name="city" required placeholder="City"/>
+			<input type="text" name="state" required placeholder="State"/>
+			<input type="text" name="zipcode" required placeholder="zipcode" pattern="[0-9]*"/>
+			<input type="submit" class="btn btn-success" name="checkout" value="Checkout"/>
+		</form>
+	<div>
+</div>
 <?php require(__DIR__ . "/partials/flash.php");
