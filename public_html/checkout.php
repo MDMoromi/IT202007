@@ -31,7 +31,7 @@ if(isset($_POST["checkout"])){
 		":pid"=>$p["id"],
 		":q"=>$p["quantity"],
 		":p"=>$p["price"],
-		":uid"=>get_user_id();
+		":uid"=>get_user_id(),
 		":add"=>$address,
 		":pay"=>$processor]);
 		
