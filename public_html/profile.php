@@ -15,7 +15,7 @@ if(isset($_GET["id"])){
 
 $db = getDB();
 //save data if we submitted the form
-if (isset($_POST["saved"] && $id == get_user_id())) {
+if (isset($_POST["saved"] && $id == get_user_id()) {
     $isValid = true;
     //check if our email changed
     $newEmail = get_email();
