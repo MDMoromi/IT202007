@@ -9,13 +9,40 @@ if (!is_logged_in()) {
 
 $db = getDB();
 if(isset($_POST["checkout"])){
-	$stmt = $db->prepare("SELECT ifnull(max(order_id),0) INTO Orders(order_id)");
-	$r = $stmt->execute([":order_id"=>$_POST["order_id"]]);
-    $stmt = $db->prepare("INSERT INTO Orders(processor,price,quantity,user_id,product_id) VALUES(:processor,:total,:quantity,:user_id,:product_id");
-    $r = $stmt->execute([":processor,:total,:quantity,:user_id,:product_id"=>$_POST["order_id"]]);
-    if($r){
-        flash("Order has been placed", "success");
-    }
+	//get new order ref
+	$stmt = $db->prepare("SELECT IFNULL(MAX(order_id),0) as om FROM Orders");
+	$stmt->execute();
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	$max = (int)$result["om"];
+	$max++;
+	
+	//get product info
+	$stmt->prepare("SELECT p.id, p.price, c.quantity, p.price*c.quantity as subtotal From Cart c JOIN Products p on c.product_id = p.id where c.user_id = :uid");
+	$stmt->execute([":uid"=>get_user_id()]);
+	$purchases = $stmt->fetchAll(FETCH_ASSOC);
+	
+	foreach($purchases as $p){
+		//insert line item to order
+		$stmt = $db->("INSERT INTO Order (order_id, product_id, quantity, price, user_id, add, pay) VALUES(:oid, :pid, :q, :p, :uid, :add, :pay)");
+		$stmt->execute([
+		":oid"=>$max,
+		":pid"=>$p["id"],
+		":q"=>$p["quantity"],
+		":p"=>$p["price"],
+		":uid"=>get_user_id();
+		":add"=>$address,
+		":pay"=>$processor]);
+		
+		//update quantity
+		$stmt = $db->prepare("UPDATE Products set quantity = quantity - :q WHERE id = :id");
+		$stmt->execute([
+		":q"=>$p["quantity"],
+		":id"=>$p["id"]);
+	}
+	
+	//clear cart
+	$stmt = $db->prepare("DELETE FROM Cart where user_id = :uid");
+	$stmt->execute([":uid"=>get_user_id()]);
 }
 
 $stmt = $db->prepare("SELECT c.id, p.name, c.price, c.quantity, (c.price * c.quantity) as sub from Cart c JOIN Products p on c.product_id = p.id where c.user_id = :id");
